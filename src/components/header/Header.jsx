@@ -1,8 +1,6 @@
 import './style.css'
 import { fetchWeatherData , fetchForecastData } from '../../data/api'
 import { useEffect } from 'react';
-import { useState } from 'react';
-import axios from 'axios';
 function Header({ city, setCity, setWeatherData , setForecastData }) {
 
   const getWeatherData = async () => {
@@ -31,11 +29,9 @@ function Header({ city, setCity, setWeatherData , setForecastData }) {
     getFoercastData();
   }, [])
 
-
-
-  const [countries, setCountries] = useState([]);
-  const [text, setText] = useState('');
-  const [suggs, setSuggs] = useState([]);
+  // const [countries, setCountries] = useState([]);
+  // const [text, setText] = useState('');
+  // const [suggs, setSuggs] = useState([]);
   //  useEffect(() => {
   //   const countryLoader = async () => {
   //     // const response = await axios.get('https://restcountries.com/v3.1/all');
@@ -70,28 +66,26 @@ function Header({ city, setCity, setWeatherData , setForecastData }) {
   //   countryLoader();
   //  },[])
 
+  //  const onChangeHandler = (text) => {
+  //   let matches = []; 
+  //   if (text.length > 0) {
+  //     matches = countries.filter((country) => {
+  //       const regex = new RegExp(`${text}`, 'gi');
+  //       return country.city.match(regex) || country.country.match(regex)
+  //     })
+  //   }
 
-
-   const onChangeHandler = (text) => {
-    let matches = []; 
-    if (text.length > 0) {
-      matches = countries.filter((country) => {
-        const regex = new RegExp(`${text}`, 'gi');
-        return country.city.match(regex) || country.country.match(regex)
-      })
-    }
-
-    console.log('matches' , matches)
-    setSuggs(matches)
-    setText(text)
-   }
+  //   console.log('matches' , matches)
+  //   setSuggs(matches)
+  //   setText(text)
+  //  }
    
 
   return (
     <div className='header'>
         <span className="dancing logo">Weather</span>
         <div className="search-box">
-            <input type="text" value={text} onChange={(e) => {setCity(e.target.value); onChangeHandler(e.target.value);}} placeholder='search for city...' />
+            <input type="text"  onChange={(e) => setCity(e.target.value)} placeholder='search for city...' />
             {/* <div class="custom-select" > */}
               {/* <select  className='select'  value={text} onChange={(e) => {setCity(e.target.value); onChangeHandler(e.target.value);}}>
                 {countries.map((country, i) => (

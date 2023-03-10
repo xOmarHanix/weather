@@ -1,5 +1,4 @@
 import './style.css';
-import { WiRainWind } from 'react-icons/wi'
 
 function Forecast({ forecastData , weatherData }) {
   return (
